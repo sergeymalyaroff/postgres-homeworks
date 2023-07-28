@@ -12,6 +12,7 @@ FROM orders
 ORDER BY ship_country, ship_city;
 
 
+
 -- 3. сколько дней в среднем уходит на доставку товара в Германию (таблица orders, колонки order_date, shipped_date, ship_country)
 SELECT AVG(EXTRACT(EPOCH FROM (shipped_date::timestamp - order_date::timestamp))/86400) AS average_delivery_time
 FROM orders

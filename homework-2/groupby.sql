@@ -21,6 +21,7 @@ FROM employees
 WHERE region IS NULL;
 
 
+
 -- 4. количество поставщиков (suppliers) в каждой из стран. Результат отсортировать по убыванию количества поставщиков в стране
 
 SELECT country, COUNT(*) as number_of_suppliers
