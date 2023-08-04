@@ -57,15 +57,15 @@ WHERE
 -- Этот запрос написать именно с использованием подзапроса.
 
 SELECT
-    products.product_name
+    p.product_name
 FROM
-    products
-INNER JOIN
-    (SELECT
-        product_id
-    FROM
-        order_details
-    GROUP BY
-        product_id
-    HAVING
-        SUM(quantity) = 10) AS ordered_10 ON products.product_id = ordered_10.product_id;
+    products p
+WHERE
+    p.product_id IN (
+        SELECT
+            od.product_id
+        FROM
+            order_details od
+        WHERE
+            od.quantity = 10
+    );
